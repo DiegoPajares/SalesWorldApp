@@ -1,27 +1,27 @@
 {
   "project_info": {
-    "project_number": "194421300573",
-    "firebase_url": "https://sales-world-peru.firebaseio.com",
-    "project_id": "sales-world-peru",
-    "storage_bucket": "sales-world-peru.appspot.com"
+    "project_number": "1000057154762",
+    "firebase_url": "https://push-notification-test-3acb9.firebaseio.com",
+    "project_id": "push-notification-test-3acb9",
+    "storage_bucket": "push-notification-test-3acb9.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:194421300573:android:43d784af1cdc4acf",
+        "mobilesdk_app_id": "1:1000057154762:android:06eb3a09aee1afc6",
         "android_client_info": {
-          "package_name": "com.salesworldperu.app"
+          "package_name": "com.pycsolutions.pushtest"
         }
       },
       "oauth_client": [
         {
-          "client_id": "194421300573-oin6uvllgrgsqb6smhv2cepejre52ask.apps.googleusercontent.com",
+          "client_id": "1000057154762-doljc712rreapl0qnci2c4t4bcohdiug.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDBMbNgpUbDwuDyrWmsIpbptE6ijHtuFRo"
+          "current_key": "AIzaSyBkWHZNpgi5IUlc7Y5KhPVsYLolFVTB_rY"
         }
       ],
       "services": {
