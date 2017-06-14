@@ -1,0 +1,99 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "cordova-plugin-firebase@0.1.20",
+        "scope": null,
+        "escapedName": "cordova-plugin-firebase",
+        "name": "cordova-plugin-firebase",
+        "rawSpec": "0.1.20",
+        "spec": "0.1.20",
+        "type": "version"
+      },
+      "/Volumes/Libre/PhoneGapProjects/PushNotificationsTest/node_modules"
+    ]
+  ],
+  "_from": "cordova-plugin-firebase@0.1.20",
+  "_id": "cordova-plugin-firebase@0.1.20",
+  "_inCache": true,
+  "_location": "/cordova-plugin-firebase",
+  "_nodeVersion": "6.9.2",
+  "_npmOperationalInternal": {
+    "host": "packages-12-west.internal.npmjs.com",
+    "tmp": "tmp/cordova-plugin-firebase-0.1.20.tgz_1491228289132_0.7139896552544087"
+  },
+  "_npmUser": {
+    "name": "arnesson",
+    "email": "hello@arnesson.io"
+  },
+  "_npmVersion": "3.10.9",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "cordova-plugin-firebase@0.1.20",
+    "scope": null,
+    "escapedName": "cordova-plugin-firebase",
+    "name": "cordova-plugin-firebase",
+    "rawSpec": "0.1.20",
+    "spec": "0.1.20",
+    "type": "version"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-firebase/-/cordova-plugin-firebase-0.1.20.tgz",
+  "_shasum": "bf7c59da37a3ecdbc87267fd8068c421c596ce44",
+  "_shrinkwrap": null,
+  "_spec": "cordova-plugin-firebase@0.1.20",
+  "_where": "/Volumes/Libre/PhoneGapProjects/PushNotificationsTest/node_modules",
+  "author": {
+    "name": "Robert Arnesson"
+  },
+  "bugs": {
+    "url": "https://github.com/arnesson/cordova-plugin-firebase/issues"
+  },
+  "cordova": {
+    "id": "cordova-plugin-firebase",
+    "platforms": [
+      "android",
+      "ios",
+      "browser"
+    ]
+  },
+  "dependencies": {},
+  "description": "Cordova plugin for Google Firebase",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "shasum": "bf7c59da37a3ecdbc87267fd8068c421c596ce44",
+    "tarball": "https://registry.npmjs.org/cordova-plugin-firebase/-/cordova-plugin-firebase-0.1.20.tgz"
+  },
+  "gitHead": "f90101d891c51e7347d11adc2de5b67da601111e",
+  "homepage": "https://github.com/arnesson/cordova-plugin-firebase#readme",
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios",
+    "cordova-browser",
+    "firebase",
+    "push",
+    "notifications"
+  ],
+  "license": "MIT",
+  "maintainers": [
+    {
+      "name": "arnesson",
+      "email": "hello@arnesson.io"
+    }
+  ],
+  "name": "cordova-plugin-firebase",
+  "optionalDependencies": {},
+  "readme": "# cordova-plugin-firebase\nThis plugin brings push notifications, analytics, event tracking, crash reporting and more from Google Firebase to your Cordova project!\nAndroid and iOS supported (including iOS 10).\n\n## Installation\nSee npm package for versions - https://www.npmjs.com/package/cordova-plugin-firebase\n\nInstall the plugin by adding it your project's config.xml:\n```\n<plugin name=\"cordova-plugin-firebase\" spec=\"0.1.20\" />\n```\nor by running:\n```\ncordova plugin add cordova-plugin-firebase@0.1.20 --save\n```\nDownload your Firebase configuration files, GoogleService-Info.plist for ios and google-services.json for android, and place them in the root folder of your cordova project:\n\n```\n- My Project/\n    platforms/\n    plugins/\n    www/\n    config.xml\n    google-services.json       <--\n    GoogleService-Info.plist   <--\n    ...\n```\n\nSee https://support.google.com/firebase/answer/7015592 for details how to download the files from firebase.\n\nThis plugin uses a hook (after prepare) that copies the configuration files to the right place, namely platforms/ios/\\<My Project\\>/Resources for ios and platforms/android for android.\n\n**Note that the Firebase SDK requires the configuration files to be present and valid, otherwise your app will crash on boot or Firebase features won't work.**\n\n## Changing Notification Icon\nThe plugin will use notification_icon from drawable resources if it exists, otherwise the default app icon will is used.\nTo set a big icon and small icon for notifications, define them through drawable nodes.  \nCreate the required styles.xml files and add the icons to the  \n`<projectroot>/res/native/android/res/<drawable-DPI>` folders.  \n\nThe example below uses a png named \"ic_silhouette.png\", the app Icon (@mipmap/icon) and sets a base theme.  \nFrom android version 21 (Lollipop) notifications were changed, needing a seperate setting.  \nIf you only target Lollipop and above, you don't need to setup both.  \nThankfully using the version dependant asset selections, we can make one build/apk supporting all target platforms.  \n`<projectroot>/res/native/android/res/values/styles.xml`\n```\n<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<resources>\n    <!-- inherit from the holo theme -->\n    <style name=\"AppTheme\" parent=\"android:Theme.Light\">\n        <item name=\"android:windowDisablePreview\">true</item>\n    </style>\n    <drawable name=\"notification_big\">@mipmap/icon</drawable>\n    <drawable name=\"notification_icon\">@mipmap/icon</drawable>\n</resources>\n```\nand  \n`<projectroot>/res/native/android/res/values-v21/styles.xml`\n```\n<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<resources>\n    <!-- inherit from the material theme -->\n    <style name=\"AppTheme\" parent=\"android:Theme.Material\">\n        <item name=\"android:windowDisablePreview\">true</item>\n    </style>\n    <drawable name=\"notification_big\">@mipmap/icon</drawable>\n    <drawable name=\"notification_icon\">@drawable/ic_silhouette</drawable>\n</resources>\n```\n\n## Notification Colors\n\nOn Android Lollipop and above you can also set the accent color for the notification by adding a color setting.\n\n`<projectroot>/res/native/android/res/values/colors.xml`\n```\n<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<resources>\n    <color name=\"primary\">#FFFFFF00</color>\n    <color name=\"primary_dark\">#FF220022</color>\n    <color name=\"accent\">#FF00FFFF</color>\n</resources>\n```\n\n\n### Notes about PhoneGap Build\n\nHooks does not work with PhoneGap Build. This means you will have to manually make sure the configuration files are included. One way to do that is to make a private fork of this plugin and replace the placeholder config files (see src/ios and src/android) with your actual ones, as well as hard coding your app id and api key in plugin.xml.\n\n\n## Methods\n\n### getToken\n\nGet the device token (id):\n```\nwindow.FirebasePlugin.getToken(function(token) {\n    // save this server-side and use it to push notifications to this device\n    console.log(token);\n}, function(error) {\n    console.error(error);\n});\n```\nNote that token will be null if it has not been established yet\n\n### onTokenRefresh\n\nRegister for token changes:\n```\nwindow.FirebasePlugin.onTokenRefresh(function(token) {\n    // save this server-side and use it to push notifications to this device\n    console.log(token);\n}, function(error) {\n    console.error(error);\n});\n```\nThis is the best way to get a valid token for the device as soon as the token is established\n\n### onNotificationOpen\n\nRegister notification callback:\n```\nwindow.FirebasePlugin.onNotificationOpen(function(notification) {\n    console.log(notification);\n}, function(error) {\n    console.error(error);\n});\n```\nNotification flow:\n\n1. App is in foreground:\n    1. User receives the notification data in the JavaScript callback without any notification on the device itself (this is the normal behaviour of push notifications, it is up to you, the developer, to notify the user)\n2. App is in background:\n    1. User receives the notification message in its device notification bar\n    2. User taps the notification and the app opens\n    3. User receives the notification data in the JavaScript callback\n\nNotification icon on Android:\n\n[Changing notification icon](#changing-notification-icon)\n\n### grantPermission (iOS only)\n\nGrant permission to recieve push notifications (will trigger prompt):\n```\nwindow.FirebasePlugin.grantPermission();\n```\n### hasPermission\n\nCheck permission to recieve push notifications:\n```\nwindow.FirebasePlugin.hasPermission(function(data){\n    console.log(data.isEnabled);\n});\n```\n\n### setBadgeNumber\n\nSet a number on the icon badge:\n```\nwindow.FirebasePlugin.setBadgeNumber(3);\n```\n\nSet 0 to clear the badge\n```\nwindow.FirebasePlugin.setBadgeNumber(0);\n```\n\n### getBadgeNumber\n\nGet icon badge number:\n```\nwindow.FirebasePlugin.getBadgeNumber(function(n) {\n    console.log(n);\n});\n```\n\n### subscribe\n\nSubscribe to a topic:\n```\nwindow.FirebasePlugin.subscribe(\"example\");\n```\n\n### unsubscribe\n\nUnsubscribe from a topic:\n```\nwindow.FirebasePlugin.unsubscribe(\"example\");\n```\n\n### logEvent\n\nLog an event using Analytics:\n```\nwindow.FirebasePlugin.logEvent(\"select_content\", {content_type: \"page_view\", item_id: \"home\"});\n```\n\n### setScreenName\n\nSet the name of the current screen in Analytics:\n```\nwindow.FirebasePlugin.setScreenName(\"Home\");\n```\n\n### setUserId\n\nSet a user id for use in Analytics:\n```\nwindow.FirebasePlugin.setUserId(\"user_id\");\n```\n\n### setUserProperty\n\nSet a user property for use in Analytics:\n```\nwindow.FirebasePlugin.setUserProperty(\"name\", \"value\");\n```\n\n### fetch\n\nFetch Remote Config parameter values for your app:\n```\nwindow.FirebasePlugin.fetch();\n// or, specify the cacheExpirationSeconds\nwindow.FirebasePlugin.fetch(600);\n```\n\n### activateFetched\n\nActivate the Remote Config fetched config:\n```\nwindow.FirebasePlugin.activateFetched(function(activated) {\n    // activated will be true if there was a fetched config activated,\n    // or false if no fetched config was found, or the fetched config was already activated.\n    console.log(activated);\n}, function(error) {\n    console.error(error);\n});\n```\n\n### getValue\n\nRetrieve a Remote Config value:\n```\nwindow.FirebasePlugin.getValue(\"key\", function(value) {\n    console.log(value);\n}, function(error) {\n    console.error(error);\n});\n// or, specify a namespace for the config value\nwindow.FirebasePlugin.getValue(\"key\", \"namespace\", function(value) {\n    console.log(value);\n}, function(error) {\n    console.error(error);\n});\n```\n\n### getByteArray (Android only)\n**NOTE: byte array is only available for SDK 19+**\nRetrieve a Remote Config byte array:\n```\nwindow.FirebasePlugin.getByteArray(\"key\", function(bytes) {\n    // a Base64 encoded string that represents the value for \"key\"\n    console.log(bytes.base64);\n    // a numeric array containing the values of the byte array (i.e. [0xFF, 0x00])\n    console.log(bytes.array);\n}, function(error) {\n    console.error(error);\n});\n// or, specify a namespace for the byte array\nwindow.FirebasePlugin.getByteArray(\"key\", \"namespace\", function(bytes) {\n    // a Base64 encoded string that represents the value for \"key\"\n    console.log(bytes.base64);\n    // a numeric array containing the values of the byte array (i.e. [0xFF, 0x00])\n    console.log(bytes.array);\n}, function(error) {\n    console.error(error);\n});\n```\n\n### getInfo (Android only)\n\nGet the current state of the FirebaseRemoteConfig singleton object:\n```\nwindow.FirebasePlugin.getInfo(function(info) {\n    // the status of the developer mode setting (true/false)\n    console.log(info.configSettings.developerModeEnabled);\n    // the timestamp (milliseconds since epoch) of the last successful fetch\n    console.log(info.fetchTimeMillis);\n    // the status of the most recent fetch attempt (int)\n    console.log(info.lastFetchStatus);\n}, function(error) {\n    console.error(error);\n});\n```\n\n### setConfigSettings (Android only)\n\nChange the settings for the FirebaseRemoteConfig object's operations:\n```\nvar settings = {\n    developerModeEnabled: true\n}\nwindow.FirebasePlugin.setConfigSettings(settings);\n```\n\n### setDefaults (Android only)\n\nSet defaults in the Remote Config:\n```\n// define defaults\nvar defaults = {\n    // map property name to value in Remote Config defaults\n    mLong: 1000,\n    mString: 'hello world',\n    mDouble: 3.14,\n    mBoolean: true,\n    // map \"mBase64\" to a Remote Config byte array represented by a Base64 string\n    // Note: the Base64 string is in an array in order to differentiate from a string config value\n    mBase64: [\"SGVsbG8gV29ybGQ=\"],\n    // map \"mBytes\" to a Remote Config byte array represented by a numeric array\n    mBytes: [0xFF, 0x00]\n}\n// set defaults\nwindow.FirebasePlugin.setDefaults(defaults);\n// or, specify a namespace\nwindow.FirebasePlugin.setDefaults(defaults, \"namespace\");\n```\n",
+  "readmeFilename": "README.md",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arnesson/cordova-plugin-firebase.git"
+  },
+  "scripts": {},
+  "version": "0.1.20"
+}

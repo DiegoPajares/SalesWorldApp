@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Sales World APP</string>
+    <string name="launcher_name">@string/app_name</string>
+    <string name="activity_name">@string/launcher_name</string>
+    
+    <string name="google_app_id">1:194421300573:android:43d784af1cdc4acf</string>
+    <string name="google_api_key">AIzaSyDBMbNgpUbDwuDyrWmsIpbptE6ijHtuFRo</string>
+</resources>
